@@ -25,8 +25,15 @@ def get_old_people():
     Returns:
         list: (name, age) of old people 
     """
-    # TODO: Create function body
+    # Create function body
     # Hint: See example code in lab instructions entitled "Getting People Data from the Database"
+    con = sqlite3.connect('social_network.db')
+    cur = con.cursor()
+    cur.execute('SELECT * FROM people')
+    all_people = cur.fetchall()
+    pprint(all_people)
+    con.commit()
+    con.close()
     
     return
 
@@ -38,6 +45,7 @@ def print_name_and_age(name_and_age_list):
     """
     # TODO: Create function body
     # Hint: Use a for loop to iterate the list of tuples to print a sentence for each old person
+
     return
 
 def save_name_and_age_to_csv(name_and_age_list, csv_path):

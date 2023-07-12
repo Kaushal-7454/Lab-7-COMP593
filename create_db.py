@@ -22,7 +22,7 @@ def main():
 
 def create_people_table():
     """Creates the people table in the database"""
-    # TODO: Create function body
+    # Create function body
     con = sqlite3.connect('social_network.db')
     cur = con.cursor()
     create_ppl_tbl_query = """
@@ -49,7 +49,7 @@ def create_people_table():
 
 def populate_people_table():
     """Populates the people table with 200 fake people"""
-    # TODO: Create function body
+    # Create function body
     # Hint: See example code in lab instructions entitled "Inserting Data into a Table"
     # Hint: See example code in lab instructions entitled "Working with Faker"
     add_person_query = """
@@ -69,7 +69,7 @@ def populate_people_table():
         """
 # Define a tuple of data for the new person to insert into people table
 # Data values must be in the same order as specified in query
-    new_person = ('Kaushakumar Limbachiya',
+    new_people = ('Kaushakumar Limbachiya',
 'kaushal.@limbachiya.net',
 '101, crawford drive',
 'peterbourough',
@@ -79,7 +79,7 @@ def populate_people_table():
 datetime.now(),
 datetime.now())
 # Execute query to add new person to people table
-    cur.execute(add_person_query, new_person)
+    cur.execute(add_person_query, new_people)
     con.commit()
     con.close()
     return
