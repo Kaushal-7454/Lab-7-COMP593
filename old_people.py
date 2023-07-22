@@ -9,8 +9,8 @@ Usage:
 import os
 from create_db import db_path, script_dir
 from pprint import pprint 
-from faker import faker 
 import sqlite3
+import pandas as pd
 
 def main():
     old_people_list = get_old_people()
@@ -45,7 +45,8 @@ def print_name_and_age(name_and_age_list):
     """
     # TODO: Create function body
     # Hint: Use a for loop to iterate the list of tuples to print a sentence for each old person
-
+    for name, age in name_and_age_list:
+        print(f"{name} is {age} years old.")
     return
 
 def save_name_and_age_to_csv(name_and_age_list, csv_path):
@@ -57,6 +58,12 @@ def save_name_and_age_to_csv(name_and_age_list, csv_path):
     """
     # TODO: Create function body
     # Hint: In Lab 3, we converted a list of tuples into a pandas DataFrame and saved it to a CSV file
+    df = pd.Dataframe(name_and_age_list, columns=['Name', 'Age'])
+    df = pd.read_csv(csv_path)
+    df.to_csv(csv_path, index=False)
+    sql_query = "SELECT name, age FROM people WHERE age >=50"
+    path_of_csv_file = "old_peoplecsv_file.csv"
+
     return
 
 if __name__ == '__main__':
